@@ -26,7 +26,7 @@ Request Payload:
 }
 ```
 
-`payload` : Base64 encoded representation of audio file to be redacted
+`payload` : Base64 encoded representation of audio file to be redacted.  Currently only `.mp3` formats are functioning
 
 `segments` : List of start and end seconds to be redacted.  In the example above audio between 1-3 seconds and 8-10 will be redacted
 
@@ -79,6 +79,8 @@ To build your own Docker image:
 
 Applicaiton Parameters
 -
+
+This items are not yet overridable in the Docker image 
 
 `delete.temp.source.media` (default = true) : After the service decodes the audio file from the client, should the application remove the source file from the file system
 
