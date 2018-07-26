@@ -86,7 +86,7 @@ public class AudioRedactionFfmpegServiceImpl implements AudioRedactionService{
         if (destinationMediaFileLocation!=null && !destinationMediaFileLocation.isEmpty()){
             return addDelimeterToEndOfString(destinationMediaFileLocation);
         } else {
-            return FileHelper.getTempDirectory();
+            return addDelimeterToEndOfString(FileHelper.getTempDirectory());
         }
     }
 

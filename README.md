@@ -62,6 +62,8 @@ After the tools above have been installed and configured, follow these steps to 
 2. From project root.  Run `mvn clean package`
 3. Run the application `java -jar target/audio-redactor-0.0.1-SNAPSHOT.jar`
 
+NOTE: To run the application with custom application parameters (for example persist the converted file to another directory), provide them as follows: `java -Ddelete.temp.destination.media=false -Ddestination.media.file.location=/var/log/audio-redactor/ -jar target/audio-redactor-0.0.1-SNAPSHOT.jar`
+
 Docker Image
 -
 
@@ -76,11 +78,20 @@ To build your own Docker image:
 3. Build docker image `docker build . -t YOUR_REPO/audio-redactor`
 4. Push to docker repo `docker push YOUR_REPO/audio-redactor`
 
+Environment variables (map to Application Parameters in next section):
 
-Applicaiton Parameters
+`DELETE_SOURCE_FILE`: (default = true) When the service accepts the audio file from the client, the application deletes the file after it completes the transaction (unless set to false)
+
+`DELETE_DESTINATION_FILE`: (default = true) When the service converts the file it creates a new file on the file system which is the modified file.  After returning the response to the user this file is deleted (set to false if you want the file to not be deleted)
+
+`DESTINATION_DIRECTORY`: (default = /var/audio-redactor/) The output directory for the redacted audio file
+
+Example usage: `docker run -e DELETE_DESTINATION_FILE=false -p 8888:8080 mkez00/audio-redactor:latest`
+
+These environment variables were made available to allow the user to potentially use a `volumeMount` (Kubernetes) or equivalent (like a bind mount in Docker) to persist the file outside of the Docker container after processing instead of the client managing the returned payload.
+
+Application Parameters
 -
-
-These items are not yet overridable in the Docker image 
 
 `delete.temp.source.media` (default = true) : After the service decodes the audio file from the client, should the application remove the source file from the file system
 
