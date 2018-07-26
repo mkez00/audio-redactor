@@ -80,7 +80,7 @@ To build your own Docker image:
 Applicaiton Parameters
 -
 
-This items are not yet overridable in the Docker image 
+These items are not yet overridable in the Docker image 
 
 `delete.temp.source.media` (default = true) : After the service decodes the audio file from the client, should the application remove the source file from the file system
 
