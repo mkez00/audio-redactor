@@ -9,6 +9,8 @@ Audio Redactor is an application which exposes a web service for users to call t
 Usage
 -
 
+The easiest way to get up and running to test this application is to use Docker.  See Docker Image section below for instructions.
+
 To redact segments of audio from an audio file, the following HTTP request is required:
 
 URL: `POST http://localhost:8080/`
@@ -69,7 +71,11 @@ Docker Image
 
 A Docker image is available for use which packages the application and FFMPEG into a single Docker image.
 
-Download the Docker image here: https://hub.docker.com/r/mkez00/audio-redactor/
+To download Docker image and run:
+
+1. Pull Docker image: `docker pull mkez00/audio-redactor`
+2. Create and run Docker container: `docker run -p 8080:8080 mkez00/audio-redactor:latest`
+3. Start using audio-redactor
 
 To build your own Docker image:
 
