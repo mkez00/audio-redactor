@@ -4,7 +4,7 @@ Audio Redactor
 Overview
 -
 
-Audio Redactor is an application which exposes a web service for users to call to redact sections of a provided audio file.  The application requires FFMPEG to do the dirty work.
+Audio Redactor is an application which exposes a JSON-RPC web service (HTTP) for users that need to redact sections of a provided audio file.  The application requires FFMPEG to do the dirty work.
 
 Usage
 -
