@@ -156,8 +156,7 @@ public class AudioRedactionFfmpegServiceImpl implements AudioRedactionService{
      */
     private boolean isValidHash(Audio audio, File audioFile) throws IOException {
         if (audio!=null && audio.getSha256()!=null && !audio.getSha256().isEmpty()){
-            String audioFileHash = FileHelper.getSha256(audioFile);
-            if (audio.getSha256().equalsIgnoreCase(audioFileHash)){
+            if (audio.getSha256().equalsIgnoreCase(FileHelper.getSha256(audioFile))){
                 LOG.info("Valid SHA256: " + audio.getSha256());
                 return true;
             } else {
@@ -172,7 +171,7 @@ public class AudioRedactionFfmpegServiceImpl implements AudioRedactionService{
 
     /**
      *
-     * Builds command to call to system which must have FFMPEG installed to work.  The call itself will take the source file and strip out the
+     * Builds command to call to system which must have FFMPEG installed to work.  The call itself will take the source file and mute the
      * segments that are provided in the metadata (Audio)
      *
      * @param audio
