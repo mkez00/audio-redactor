@@ -1,6 +1,8 @@
 Audio Redactor
 =
 
+[![DepShield Badge](https://depshield.sonatype.org/badges/mkez00/audio-redactor/depshield.svg)](https://depshield.github.io)
+
 Overview
 -
 
